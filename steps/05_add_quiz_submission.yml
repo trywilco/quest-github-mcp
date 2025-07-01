@@ -1,0 +1,156 @@
+id: add_quiz_submission
+learningObjectives:
+  - Implement quiz submission and scoring functionality using GHCP Agent Mode.
+hints: []
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: "Time to make your quiz interactive! 📝"
+          - text: "Now that you have questions stored in the database, let's add the ability for users to submit answers and get scored results."
+          - text: "Ask GHCP Agent Mode to help you implement:"
+          - text: "1. **POST /api/quiz/submit** - Accept quiz answers and return a score"
+          - text: "2. **Request validation** - Ensure all required questions are answered"
+          - text: "3. **Scoring logic** - Calculate percentage score based on correct answers"
+          - text: "4. **Response format** - Return score, total questions, correct answers, and percentage"
+          - text: 'The endpoint should accept a JSON body like: `{"answers": [{"questionId": 1, "answer": "option1"}, {"questionId": 2, "answer": "option2"}]}`'
+          - text: 'And return: `{"score": 3, "total": 5, "percentage": 60, "passed": false}`'
+          - text: ":instruction[Send me the URL of your quiz submission endpoint so I can test it.] The URL should end with `/api/quiz/submit` and accept POST requests."
+
+trigger:
+  type: user_message
+  flowNode:
+    if:
+      conditions:
+        - conditionId: text_match_regex
+          params:
+            text: "${userMessageText}"
+            regex: ^https?:\/\/.+\/api\/quiz\/submit$
+      then:
+        do:
+          - actionId: network_http_request
+            name: get_questions_for_test
+            params:
+              url: "${userMessageText.replace('/submit', 's')}"
+        if:
+          conditions:
+            - conditionId: is_truthy
+              params:
+                value: "${outputs.get_questions_for_test?.success}"
+          then:
+            if:
+              conditions:
+                - conditionId: is_truthy
+                  params:
+                    value: "${outputs.get_questions_for_test?.data?.questions && Array.isArray(outputs.get_questions_for_test.data.questions) && outputs.get_questions_for_test.data.questions.length > 0}"
+              then:
+                do:
+                  - actionId: network_http_request
+                    name: test_quiz_submit
+                    params:
+                      url: "${userMessageText}"
+                      method: POST
+                      headers:
+                        Content-Type: application/json
+                      body: |
+                        {
+                          "answers": ${(() => {
+                            const questions = outputs.get_questions_for_test.data.questions;
+                            return JSON.stringify(questions.map((q, index) => ({
+                              questionId: q.id || (index + 1),
+                              answer: q.options && q.options[0] ? q.options[0] : "option1"
+                            })));
+                          })()}
+                        }
+                if:
+                  conditions:
+                    - conditionId: is_truthy
+                      params:
+                        value: "${outputs.test_quiz_submit?.success}"
+                  then:
+                    if:
+                      conditions:
+                        - conditionId: is_truthy
+                          params:
+                            value: |
+                              (() => {
+                                const response = outputs.test_quiz_submit;
+                                const data = response.data;
+                                
+                                // Check if response has required fields
+                                if (!data || typeof data.score !== 'number' || typeof data.total !== 'number' || typeof data.percentage !== 'number') {
+                                  return false;
+                                }
+                                
+                                // Check if score is reasonable (0 to total)
+                                if (data.score < 0 || data.score > data.total) {
+                                  return false;
+                                }
+                                
+                                // Check if percentage calculation is correct
+                                const expectedPercentage = Math.round((data.score / data.total) * 100);
+                                if (Math.abs(data.percentage - expectedPercentage) > 1) {
+                                  return false;
+                                }
+                                
+                                return true;
+                              })()
+                      then:
+                        do:
+                          - actionId: bot_message
+                            params:
+                              person: lucca
+                              messages:
+                                - text: "Excellent! Your quiz submission endpoint is working perfectly! 🎯"
+                                - text: "✅ Accepts POST requests with quiz answers"
+                                - text: "✅ Returns proper score calculation"
+                                - text: "✅ Includes score, total, and percentage fields"
+                                - text: "Your quiz API now has full CRUD functionality with scoring logic. Great work on implementing the business logic!"
+                          - actionId: finish_step
+                      else:
+                        do:
+                          - actionId: bot_message
+                            params:
+                              person: lucca
+                              messages:
+                                - text: "I can see the endpoint is responding, but the response format needs adjustment:"
+                                - text: "❌ Make sure to return `score`, `total`, and `percentage` fields as numbers"
+                                - text: "❌ Ensure percentage calculation is correct (score/total * 100)"
+                                - text: "❌ Verify score is between 0 and total number of questions"
+                                - text: "Please fix the response format and try again."
+                  else:
+                    do:
+                      - actionId: bot_message
+                        params:
+                          person: lucca
+                          messages:
+                            - text: "I can see the URL but the quiz submission endpoint isn't responding correctly to POST requests. Make sure your `/api/quiz/submit` endpoint accepts JSON data and processes quiz answers. Check your implementation and try again."
+              else:
+                do:
+                  - actionId: bot_message
+                    params:
+                      person: lucca
+                      messages:
+                        - text: "I can reach your questions API, but it's not returning valid quiz data. 🚨"
+                        - text: "❌ Your `/api/questions` endpoint needs to return an array of questions"
+                        - text: "❌ Make sure your database contains quiz questions"
+                        - text: "Please fix your questions API first, then test the submission endpoint again."
+          else:
+            do:
+              - actionId: bot_message
+                params:
+                  person: lucca
+                  messages:
+                    - text: "I can't retrieve questions from your API to test the submission endpoint. 🚨"
+                    - text: "❌ Your `/api/questions` endpoint isn't responding correctly"
+                    - text: "❌ Make sure your questions API is working first"
+                    - text: "Please fix your `/api/questions` endpoint, then test the submission endpoint again."
+      else:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: "That doesn't look like a valid quiz submission URL. The URL should end with `/api/quiz/submit` - please provide the correct URL for your POST endpoint."

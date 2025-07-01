@@ -1,0 +1,85 @@
+id: implement_advanced_features
+learningObjectives:
+  - Compare outputs by switching between different AI models for Go middleware implementation.
+hints: []
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: "Time to put your inner scientist to use by comparing AI model outputs for Go development! 🧪"
+          - text: "Switch between different AI models available to you (could be GPT-4o, Claude, Gemini, or others)."
+          - text: "Ask each model to implement a Go middleware chain that includes:"
+          - text: "• Request logging with timestamps and response times"
+          - text: "• CORS handling for cross-origin requests"
+          - text: "• Rate limiting to prevent API abuse"
+          - text: "• Request validation for JSON payloads"
+          - text: "Implement and test both versions of the middleware (one from each model)."
+          - text: "Compare them based on: code structure and organization, performance and efficiency approaches, error handling strategies, and adherence to Go best practices."
+          - text: ":instruction[Tell me which model's middleware solution worked best for you and why.] Consider aspects like code quality, ease of implementation, performance, and how well it integrated with your existing code."
+
+trigger:
+  type: user_message
+  params:
+    person: lucca
+  flowNode:
+    do:
+      - actionId: parse_user_response
+        name: evaluate_comparison
+        params:
+          prompt: |
+            Please evaluate the user's response about comparing different AI models for Go middleware implementation.
+
+            An effective answer should include:
+            1) Evidence of testing at least 2 different AI models for the same middleware task
+            2) Working middleware implementations from multiple models
+            3) Actual testing or implementation experience with both solutions
+            4) Comparative analysis explaining their preference, including specific reasons such as:
+               - Code quality and readability differences
+               - Implementation approach variations
+               - Performance considerations
+               - Error handling patterns
+               - Integration ease
+               - Go best practices adherence
+
+            # Assessment Criteria
+            - Check if they tested multiple AI models for the same task
+            - Verify they have hands-on experience with different implementations
+            - Look for thoughtful analysis of the differences between models
+            - Ensure they provide specific reasons for their preference
+            - Evaluate the depth of their comparative insights
+
+            # Response Guidelines
+            - If the user demonstrates meaningful comparison between models with clear reasoning, return 'success: true'
+            - Provide encouraging feedback about their analytical approach
+            - If the answer lacks model comparison or specific reasoning, return 'success: false'
+            - Ask for more details about their testing experience or comparative analysis
+
+            # Tone and Style
+            - Use friendly and encouraging language
+            - Be supportive of their experimental approach
+            - Focus on their analytical skills and practical insights
+          schema:
+            success: boolean
+            reply: string
+    if:
+      conditions:
+        - conditionId: is_truthy
+          params:
+            value: "${outputs.evaluate_comparison.value.success}"
+      then:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: ${outputs.evaluate_comparison.value.reply}
+          - actionId: finish_step
+      else:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: ${outputs.evaluate_comparison.value.reply}

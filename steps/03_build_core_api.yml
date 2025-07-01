@@ -1,0 +1,29 @@
+id: build_core_api
+learningObjectives:
+  - Build RESTful quiz API endpoints using GHCP Agent Mode.
+hints: []
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: "Time to build the core functionality of your quiz API! 🧠"
+          - text: "Using GHCP Agent Mode, let's create the main quiz endpoints with proper Go patterns."
+          - text: "Ask GHCP Agent Mode to help you implement:"
+          - text: "1. **GET /api/questions** - Returns a list of quiz questions (start with in-memory data)"
+          - text: "2. **GET /api/questions/{id}** - Returns a specific question by ID"
+          - text: "3. Proper error handling with appropriate HTTP status codes"
+          - text: "4. JSON request/response handling with proper Go structs"
+          - text: "Create sample quiz data with at least 5 questions covering Go fundamentals. Each question should have multiple choice options and correct answers."
+          - text: "Make sure to implement proper CORS headers for API access."
+          - text: ":instruction[Create a pull request with your quiz API implementation.] The PR should contain your updated `main.go` file with the quiz endpoints and proper Go structs for handling JSON data. I'll automatically detect when your PR is ready for review!"
+
+trigger:
+  type: github_pr_lifecycle_status
+  flowNode:
+    do:
+      - actionId: github_pr_review
+        params:
+          messages:
+            person: lucca

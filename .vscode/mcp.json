@@ -1,0 +1,7 @@
+{
+  "servers": {
+    "wilco-mcp": {
+      "url": "https://mcp-server-wilco.vercel.app/mcp"
+    }
+  }
+}

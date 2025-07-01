@@ -1,0 +1,32 @@
+id: codespace_start
+learningObjectives:
+  - Set up a Go development environment and activate GHCP Agent Mode.
+hints: []
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: "👋 Welcome to the GitHub Copilot Agent Mode Quest for Go Backend Developers! I'm excited to guide you through this specialized adventure in backend development. 🚀"
+          - text: "In this quest, you'll master GitHub Copilot's Agent Mode specifically for Go backend development. We'll build a comprehensive quiz API service with PostgreSQL database integration, exploring how Agent Mode can accelerate Go development."
+          - text: "Agent Mode is a powerful feature that understands your Go project context and helps you write idiomatic Go code, implement database patterns, handle errors gracefully, and follow Go best practices. You'll see how it transforms backend development workflow."
+          - text: "Let's start by setting up your Go development environment with database support!"
+          - text: "[Launch the project via Codespace virtual dev environment](${platform.baseUrl}/my-codespace) or click on Codespace from the Wilco Chat top menu."
+          - text: "Once your Codespace is ready:"
+          - text: |
+              1. Open GitHub Copilot Chat
+              2. Switch to the Edit tab  
+              3. Select Agent Mode from the dropdown to activate it
+              4. Wait for the setup script to initialize Go modules and start PostgreSQL
+          - text: "![](${dropdown.png})"
+          - text: "Your minimal Go starter code is located in your [pre-created GitHub repository, you can access it here.](${user.repository})"
+          - text: "The environment includes Go 1.21+, PostgreSQL database, and all necessary VS Code extensions for Go development. Ready to dive into Go backend development with AI assistance? Let me know when you're set to begin! 💪"
+    - actionId: ready_message
+      params:
+        person: lucca
+trigger:
+  type: user_ready_response
+  flowNode:
+    do:
+      - actionId: finish_step

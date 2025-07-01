@@ -1,0 +1,40 @@
+id: mastering-ghcp-mcp
+title: Mastering GHCP Agent Mode for Go Backend Developers
+subtitle: Master GitHub Copilot Agent Mode while building robust Go backend applications.
+description: >-
+  Dive deep into GitHub Copilot (GHCP) Agent Mode specifically tailored for Go backend developers. 
+  In this quest, you'll build a comprehensive quiz API service using Go, while mastering the 
+  nuances of GHCP Agent Mode for backend development. You'll explore agent-driven development 
+  to scaffold and iterate on Go applications, experiment with switching between LLMs to compare 
+  generated Go code quality, and learn to leverage GHCP for building robust backend services.
+
+
+  You'll gain comprehensive insights into applying security best practices for Go applications 
+  using Copilot agents, learn advanced Go patterns through AI assistance, and master 
+  troubleshooting Go-specific setup and runtime issues. By the end of this quest, you'll have 
+  a production-ready Go API service and deep expertise in leveraging GHCP Agent Mode for 
+  Go backend development. Ready to elevate your Go development with AI assistance?
+level: intermediate
+duration: 0.75
+skills:
+  - Go Programming
+  - Backend Development
+  - GitHub Copilot
+  - API Development
+  - Database Integration
+  - Security Best Practices
+  - Testing in Go
+steps:
+  # - list_workspace_contents
+  - codespace_start
+  - setup_go_project
+  - build_core_api
+  - add_database_layer
+  - add_quiz_submission
+  - implement_advanced_features
+  - quest_summary
+type: MODULE
+frameworks:
+  backend:
+    - go
+repository: https://github.com/trywilco/empty-starter-go

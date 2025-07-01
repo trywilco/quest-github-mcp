@@ -1,0 +1,29 @@
+id: setup_go_project
+learningObjectives:
+  - Initialize a Go HTTP server with health endpoint using GHCP Agent Mode.
+hints: []
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: "Time to set up your Go project foundation! 🏗️"
+          - text: "Using GHCP Agent Mode, we'll create a simple Go HTTP server for our quiz API service."
+          - text: "Your starter environment already has a `go.mod` file, so we can build on that foundation."
+          - text: "Ask GHCP Agent Mode to help you:"
+          - text: "1. Create a simple HTTP server using Go's `net/http` package"
+          - text: "2. Add a health check endpoint at `/health` that returns a simple JSON response"
+          - text: "3. Make the server listen on port 8080"
+          - text: "4. Update your `main.go` file with the server implementation"
+          - text: "Once you've implemented the server code, commit your changes and create a pull request."
+          - text: ":instruction[Create a pull request with your Go HTTP server implementation.] The PR should contain your `main.go` file with the HTTP server and health endpoint. I'll automatically detect when your PR is ready for review!"
+
+trigger:
+  type: github_pr_lifecycle_status
+  flowNode:
+    do:
+      - actionId: github_pr_review
+        params:
+          messages:
+            person: lucca
