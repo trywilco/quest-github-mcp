@@ -1,0 +1,41 @@
+id: create_github_issue
+learningObjectives:
+  - Use Copilot to create GitHub issues for new features
+hints: []
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: "Great! Now let's create a GitHub issue for the selected feature."
+          - text: "Ask Copilot to open an issue in the repository about the new feature you just came up with."
+          - text: "Let me know when you've successfully created the GitHub issue."
+
+trigger:
+  type: user_message
+  flowNode:
+    if:
+      conditions:
+        - conditionId: text_match_regex
+          params:
+            text: "${userMessageText}"
+            regex: "(?i).*(created|issues|github|generated|opened).*"
+      then:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: "Excellent work! 🎉 You've successfully created a GitHub issue for the new feature."
+                - text: "✅ Created GitHub issue automatically via Copilot"
+                - text: "This demonstrates the incredible power of AI-augmented development workflow."
+          - actionId: finish_step
+      else:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: "I don't see confirmation that you've created the GitHub issue yet."
+                - text: "Please continue working with Copilot to create the GitHub issue for the new feature."

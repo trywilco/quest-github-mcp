@@ -1,8 +1,6 @@
 id: agent_mode_mcp_in_action
 learningObjectives:
-  - Use Copilot Agent Mode with MCP to research GitHub repositories
-  - Generate new feature ideas through AI-powered competitive analysis
-  - Create GitHub issues automatically via Copilot Agent Mode
+  - Use Copilot Agent to generate new feature ideas
 hints: []
 startFlow:
   do:
@@ -12,19 +10,13 @@ startFlow:
         messages:
           - text: "Time to put Agent Mode + MCP to work! 🤖"
           - text: "Now that your MCP server is configured, Copilot can talk directly to GitHub's API."
-          - text: "Let's use this superpower to research and enhance your project:"
-          - text: "**Step 1:** Close any open files first"
-          - text: "**Step 2:** Ensure Agent Mode is enabled and MCP tool is active"
-          - text: "**Step 3:** Ask Copilot:"
-          - text: "`Are there any GitHub repositories that help schools organize extracurricular activities?`"
-          - text: "**Step 4:** When prompted to use MCP, approve the request"
-          - text: "**Step 5:** Then ask Copilot:"
-          - text: "`Please describe the third result in detail — what are its core features?`"
-          - text: "`Compare its features with ours. Which are new to us?`"
-          - text: "`Let's create GitHub issues for these new ideas.`"
-          - text: "✅ Copilot will ask permission to open issues — approve as needed."
-          - text: "💡 **Tip:** Click the ➕ 'New Chat' icon after finishing this conversation to reset context."
-          - text: ":instruction[Tell me when you've successfully created GitHub issues through Copilot's research.]"
+          - text: "Let's use this superpower to research and enhance your project."
+          - text: ":instruction[Click the Copilot icon in top right corner to open Copilot chat next to the search bar.]"
+          - text: "Lets ask Copilot to come up with new feature ideas by researching similar GitHub repositories like Kahoot, Quizizz, and Quizlet."
+          - text: "`Can you find similar repositories to Kahoot, Quizizz, and Quizlet and come up with new feature ideas for our project?`"
+          - text: "When prompted to use MCP, approve the request."
+          - text: "You can ask CoPilot `Please describe the results in detail — what are its core features?`"
+          - text: "Once you have the results tell me the selected feature you want to implement."
 
 trigger:
   type: user_message

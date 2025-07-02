@@ -1,8 +1,6 @@
 id: mcp_setup
 learningObjectives:
   - Set up and configure the GitHub MCP Server in your Codespace
-  - Understand MCP as "USB-C for AI" and how it expands Copilot's capabilities
-  - Configure environment and verify Quiz App functionality
 hints: []
 startFlow:
   do:
@@ -10,12 +8,8 @@ startFlow:
       params:
         person: lucca
         messages:
-          - text: "**Step 1: Environment Setup and MCP Configuration**"
-          - text: "Once your Codespace is ready:"
-          - text: "1. Confirm you have the required extensions: GitHub Copilot Chat ✅ and Python ✅"
-          - text: "2. Verify the app works by going to the **Run and Debug** tab, clicking ▶️ **Start Debugging**, and previewing the app in the **Ports** tab"
-          - text: "**Now, let's add the MCP Server:**"
-          - text: "Create `.vscode/mcp.json` and add the GitHub MCP Server configuration:"
+          - text: "Once your Codespace is ready let's add the MCP Server."
+          - text: "Create `.vscode/mcp.json` file if you dont have it alrady, and add the GitHub MCP Server configuration:"
           - text: |
             ```json
             {

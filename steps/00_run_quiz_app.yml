@@ -1,7 +1,6 @@
 id: run_quiz_app
 learningObjectives:
   - Launch the Quiz App in your Codespace
-  - Understand the basic setup process for the environment
 hints: []
 startFlow:
   do:
