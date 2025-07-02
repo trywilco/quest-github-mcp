@@ -23,14 +23,39 @@ startFlow:
             ```
           - text: "Once you save the file, a GitHub authentication window will pop up asking you to connect with your GitHub account."
           - text: "Follow the instructions in the popup to authenticate. Once done, close the window and return to your Codespace to continue working with MCP."
-          - text: "Commit and push `.vscode/mcp.json` to complete the setup."
-          - text: ":instruction[Create the MCP configuration file and commit it to your repository.] Once you've created `.vscode/mcp.json` with the GitHub MCP Server configuration and committed it, I'll detect your progress and we can move to the next step!"
-
+          - text: ":instruction[Create the MCP configuration file and commit it to your repository.] Once you've created `.vscode/mcp.json` with the GitHub MCP Server configuration I'll detect your progress and we can move to the next step!"
+    - actionId: ready_message
+      params:
+        person: lucca
 trigger:
-  type: github_pr_lifecycle_status
+  type: user_ready_response
   flowNode:
     do:
-      - actionId: github_pr_review
+      - actionId: run_command
+        name: check_mcp_url
         params:
-          messages:
-            person: lucca
+          command: "grep -q 'https://api.githubcopilot.com/mcp/' /.vscode/mcp.json"
+    if:
+      conditions:
+        - conditionId: text_match_regex
+          params:
+            text: "${outputs.check_mcp_url?.data}"
+            regex: ".*[1-9][0-9]* passing.*"
+      then:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: "✅ The MCP URL is correctly configured in your Codespace!"
+          - actionId: finish_step
+      else:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: "❌ The MCP URL is missing or incorrect in your Codespace. Please update the /.vscode/mcp.json file and try again."
+          - actionId: ready_message
+            params:
+              person: lucca
