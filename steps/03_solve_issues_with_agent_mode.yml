@@ -1,0 +1,58 @@
+id: solve_issues_with_agent_mode
+learningObjectives:
+  - Use Copilot Agent Mode to select and implement GitHub issues
+  - Create branches, implement fixes, and push changes via AI assistance
+  - Practice responsible AI-guided development workflow
+hints: []
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: "Time to put Copilot Agent Mode to work! 🧰"
+          - text: "Now that you've created GitHub issues, let's use Copilot to actually implement one of them."
+          - text: "Ask Copilot in Chat:"
+          - text: "`#codebase How many open issues are there?`"
+          - text: "Then ask:"
+          - text: "`Please get the list of issues, review the descriptions, and pick the top 3 most important.`"
+          - text: "Choose one issue and tell Copilot:"
+          - text: "`#codebase Let's do the first one. Follow these steps: Create a new branch, Implement the fix or feature, Push changes and open a pull request.`"
+          - text: "⚠️ **Important:** Always review Copilot's proposed commands and code — MCP gives Copilot real power."
+          - text: ":instruction[Tell me when you've successfully opened a pull request for the issue implementation.]"
+
+trigger:
+  type: user_message
+  flowNode:
+    if:
+      conditions:
+        - conditionId: text_match_regex
+          params:
+            text: "${userMessageText}"
+            regex: "(?i).*(pull request|pr|opened|created).*"
+      then:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: "Excellent! 🎉 You've successfully used Copilot Agent Mode to implement a feature from a GitHub issue."
+                - text: "✅ Selected an important issue to work on"
+                - text: "✅ Used Copilot to create a branch and implement the fix"
+                - text: "✅ Opened a pull request for review"
+                - text: "This demonstrates the power of AI-assisted development workflow. Mona will automatically detect your PR and begin reviewing."
+                - text: "Next, we'll learn how to responsibly validate and merge AI-generated code."
+          - actionId: finish_step
+      else:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: "I don't see confirmation that you've opened a pull request yet."
+                - text: "Please continue working with Copilot to:"
+                - text: "1. Review the open issues in your repository"
+                - text: "2. Select one to implement"
+                - text: "3. Let Copilot create a branch and implement the solution"
+                - text: "4. Push the changes and open a pull request"
+                - text: "Once you've opened the PR, let me know!"

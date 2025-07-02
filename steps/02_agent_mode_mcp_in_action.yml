@@ -1,0 +1,63 @@
+id: agent_mode_mcp_in_action
+learningObjectives:
+  - Use Copilot Agent Mode with MCP to research GitHub repositories
+  - Generate new feature ideas through AI-powered competitive analysis
+  - Create GitHub issues automatically via Copilot Agent Mode
+hints: []
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: "Time to put Agent Mode + MCP to work! 🤖"
+          - text: "Now that your MCP server is configured, Copilot can talk directly to GitHub's API."
+          - text: "Let's use this superpower to research and enhance your project:"
+          - text: "**Step 1:** Close any open files first"
+          - text: "**Step 2:** Ensure Agent Mode is enabled and MCP tool is active"
+          - text: "**Step 3:** Ask Copilot:"
+          - text: "`Are there any GitHub repositories that help schools organize extracurricular activities?`"
+          - text: "**Step 4:** When prompted to use MCP, approve the request"
+          - text: "**Step 5:** Then ask Copilot:"
+          - text: "`Please describe the third result in detail — what are its core features?`"
+          - text: "`Compare its features with ours. Which are new to us?`"
+          - text: "`Let's create GitHub issues for these new ideas.`"
+          - text: "✅ Copilot will ask permission to open issues — approve as needed."
+          - text: "💡 **Tip:** Click the ➕ 'New Chat' icon after finishing this conversation to reset context."
+          - text: ":instruction[Tell me when you've successfully created GitHub issues through Copilot's research.]"
+
+trigger:
+  type: user_message
+  flowNode:
+    if:
+      conditions:
+        - conditionId: text_match_regex
+          params:
+            text: "${userMessageText}"
+            regex: "(?i).*(created|issues|github|generated|opened).*"
+      then:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: "Excellent work! 🎉 You've successfully used Agent Mode + MCP for competitive research."
+                - text: "✅ Researched similar repositories using Copilot + GitHub API"
+                - text: "✅ Analyzed features and compared them to your project"
+                - text: "✅ Generated new feature ideas through AI assistance"
+                - text: "✅ Created GitHub issues automatically via Copilot"
+                - text: "This demonstrates the incredible power of AI-augmented development workflow."
+                - text: "Now you have a backlog of AI-researched features ready to implement!"
+          - actionId: finish_step
+      else:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: "I don't see confirmation that you've completed the research and issue creation process yet."
+                - text: "Please continue working with Copilot to:"
+                - text: "1. Research similar GitHub repositories"
+                - text: "2. Analyze their features compared to your project"
+                - text: "3. Have Copilot create GitHub issues for new feature ideas"
+                - text: "Remember to approve MCP usage when prompted!"

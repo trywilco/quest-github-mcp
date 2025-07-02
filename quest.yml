@@ -1,40 +1,34 @@
-id: mastering-ghcp-mcp
-title: Mastering GHCP Agent Mode for Go Backend Developers
-subtitle: Master GitHub Copilot Agent Mode while building robust Go backend applications.
+id: copilot-agent-mcp-quest
+title: Copilot Agent Mode + MCP Quest
+subtitle: Supercharge GitHub Copilot with the GitHub MCP Server and Agent Mode
 description: >-
-  Dive deep into GitHub Copilot (GHCP) Agent Mode specifically tailored for Go backend developers. 
-  In this quest, you'll build a comprehensive quiz API service using Go, while mastering the 
-  nuances of GHCP Agent Mode for backend development. You'll explore agent-driven development 
-  to scaffold and iterate on Go applications, experiment with switching between LLMs to compare 
-  generated Go code quality, and learn to leverage GHCP for building robust backend services.
-
-
-  You'll gain comprehensive insights into applying security best practices for Go applications 
-  using Copilot agents, learn advanced Go patterns through AI assistance, and master 
-  troubleshooting Go-specific setup and runtime issues. By the end of this quest, you'll have 
-  a production-ready Go API service and deep expertise in leveraging GHCP Agent Mode for 
-  Go backend development. Ready to elevate your Go development with AI assistance?
+  Great job building the Quiz App! But now they're all submitting bug reports, 
+  feature requests, and ideas at once... and it's overwhelming. Scale your response 
+  by augmenting GitHub Copilot with the GitHub MCP Server and supercharging your 
+  workflow using Agent Mode. Turn GitHub Copilot into a smart teammate that can 
+  triage issues, research enhancements, and even generate code — all from within 
+  your Codespace. Learn to set up and configure the GitHub MCP Server, use Copilot 
+  Agent Mode + MCP to research similar projects and generate ideas, automatically 
+  create and triage GitHub issues, implement solutions via Copilot, and responsibly 
+  validate and merge AI-generated code.
 level: intermediate
-duration: 0.75
+duration: 1.0
 skills:
-  - Go Programming
-  - Backend Development
   - GitHub Copilot
-  - API Development
-  - Database Integration
-  - Security Best Practices
-  - Testing in Go
+  - MCP (Model Context Protocol)
+  - Agent Mode
+  - GitHub Integration
+  - Issue Management
+  - Code Review
+  - AI-Assisted Development
 steps:
-  # - list_workspace_contents
-  - codespace_start
-  - setup_go_project
-  - build_core_api
-  - add_database_layer
-  - add_quiz_submission
-  - implement_advanced_features
+  - mcp_setup
+  - agent_mode_mcp_in_action
+  - solve_issues_with_agent_mode
+  - validate_and_merge_ai_code
   - quest_summary
 type: MODULE
 frameworks:
-  backend:
-    - go
-repository: https://github.com/trywilco/empty-starter-go
+  frontend:
+    - javascript
+repository: https://github.com/trywilco/quest-github-mcp
