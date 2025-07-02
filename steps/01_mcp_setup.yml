@@ -10,12 +10,7 @@ startFlow:
       params:
         person: lucca
         messages:
-          - text: "🧠 Welcome to the Copilot Agent Mode + MCP Quest! I'm excited to guide you through this advanced AI-powered development workflow! 🚀"
-          - text: "In this quest, you'll learn to supercharge GitHub Copilot with the GitHub MCP Server. MCP (Model Context Protocol) is like 'USB-C for AI' - it helps AI tools like Copilot understand what external tools (like GitHub) are capable of and how to interact with them safely."
-          - text: "We'll turn GitHub Copilot into a smart teammate that can triage issues, research enhancements, and even generate code — all from within your Codespace."
           - text: "**Step 1: Environment Setup and MCP Configuration**"
-          - text: "First, let's make sure your Quiz App environment is ready:"
-          - text: "[Launch the project via Codespace virtual dev environment](${platform.baseUrl}/my-codespace) or click on Codespace from the Wilco Chat top menu."
           - text: "Once your Codespace is ready:"
           - text: "1. Confirm you have the required extensions: GitHub Copilot Chat ✅ and Python ✅"
           - text: "2. Verify the app works by going to the **Run and Debug** tab, clicking ▶️ **Start Debugging**, and previewing the app in the **Ports** tab"
@@ -26,33 +21,14 @@ startFlow:
             {
               "servers": {
                 "github": {
-                  "command": "docker",
-                  "args": [
-                    "run",
-                    "-i",
-                    "--rm",
-                    "-e",
-                    "GITHUB_PERSONAL_ACCESS_TOKEN",
-                    "ghcr.io/github/github-mcp-server:v0.1.1"
-                  ],
-                  "env": {
-                    "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
-                  }
+                  "type": "http",
+                  "url": "https://api.githubcopilot.com/mcp/"
                 }
-              },
-              "inputs": [
-                {
-                  "type": "promptString",
-                  "id": "github_token",
-                  "description": "GitHub Personal Access Token",
-                  "password": true
-                }
-              ]
+              }
             }
             ```
-          - text: "**Get your GitHub token by running:**"
-          - text: "`echo $GITHUB_TOKEN`"
-          - text: "Use this token when prompted to start the server."
+          - text: "Once you save the file, a GitHub authentication window will pop up asking you to connect with your GitHub account."
+          - text: "Follow the instructions in the popup to authenticate. Once done, close the window and return to your Codespace to continue working with MCP."
           - text: "Commit and push `.vscode/mcp.json` to complete the setup."
           - text: ":instruction[Create the MCP configuration file and commit it to your repository.] Once you've created `.vscode/mcp.json` with the GitHub MCP Server configuration and committed it, I'll detect your progress and we can move to the next step!"
 

@@ -22,13 +22,17 @@ skills:
   - Code Review
   - AI-Assisted Development
 steps:
-  - mcp_setup
-  - agent_mode_mcp_in_action
-  - solve_issues_with_agent_mode
-  - validate_and_merge_ai_code
-  - quest_summary
+  - 00_run_quiz_app.yml
+  - 01_mcp_setup.yml
+  - 02_agent_mode_mcp_in_action.yml
+  - 03_solve_issues_with_agent_mode.yml
+  - 04_validate_and_merge_ai_code.yml
+  - 05_add_quiz_submission.yml
+  - 05_quest_summary.yml
+  - 06_implement_advanced_features.yml
+  - 07_quest_summary.yml
 type: MODULE
 frameworks:
   frontend:
     - javascript
-repository: https://github.com/trywilco/quest-github-mcp
+repository: https://github.com/trywilco/example-quiz-app-python

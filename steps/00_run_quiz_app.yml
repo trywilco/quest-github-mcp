@@ -1,0 +1,20 @@
+id: run_quiz_app
+learningObjectives:
+  - Launch the Quiz App in your Codespace
+  - Understand the basic setup process for the environment
+hints: []
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: "🧠 Welcome to the Copilot Agent Mode + MCP Quest! I'm excited to guide you through this advanced AI-powered development workflow! 🚀"
+          - text: "In this quest, you'll learn to supercharge GitHub Copilot with the GitHub MCP Server. MCP (Model Context Protocol) is like 'USB-C for AI' - it helps AI tools like Copilot understand what external tools (like GitHub) are capable of and how to interact with them safely."
+          - text: "We'll turn GitHub Copilot into a smart teammate that can triage issues, research enhancements, and even generate code — all from within your Codespace."
+          - text: "**Step 0: Launch the Quiz App**"
+          - text: "First, let's make sure your Quiz App environment is ready:"
+          - text: "[Launch the project via Codespace virtual dev environment](${platform.baseUrl}/my-codespace) or click on Codespace from the Wilco Chat top menu."
+          - text: "Once your Codespace is ready, run the following command to start the Quiz App:"
+          - text: "`./start.sh`"
+          - text: "This will spin up your Quiz App and prepare the environment for the next steps."

@@ -2,6 +2,10 @@
   "servers": {
     "wilco-mcp": {
       "url": "https://mcp-server-wilco.vercel.app/mcp"
+    },
+     "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/"
     }
   }
 }
