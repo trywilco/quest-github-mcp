@@ -1,4 +1,4 @@
-id: mcp_setup
+id: 01_mcp_setup
 learningObjectives:
   - Set up and configure the GitHub MCP Server in your Codespace
 hints: []

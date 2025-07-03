@@ -1,4 +1,4 @@
-id: validate_and_merge_ai_code
+id: 05_validate_and_merge_ai_code
 learningObjectives:
   - Responsibly review and validate AI-generated code
   - Practice safe merging of AI-generated pull requests

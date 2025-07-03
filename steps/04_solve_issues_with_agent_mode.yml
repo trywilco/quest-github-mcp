@@ -1,4 +1,4 @@
-id: solve_issues_with_agent_mode
+id: 04_solve_issues_with_agent_mode
 learningObjectives:
   - Use Copilot Agent Mode to select and implement GitHub issues
   - Create branches, implement fixes, and push changes via AI assistance
