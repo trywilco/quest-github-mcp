@@ -17,3 +17,11 @@ startFlow:
           - text: "Once your Codespace is ready, run the following command to start the Quiz App:"
           - text: "`./start.sh`"
           - text: "This will spin up your Quiz App and prepare the environment for the next steps."
+    - actionId: ready_message
+      params:
+        person: lucca
+trigger:
+  type: user_ready_response
+  flowNode:
+    do:
+      - actionId: finish_step
