@@ -17,7 +17,9 @@ startFlow:
           - text: "When prompted to use MCP, approve the request."
           - text: "You can ask CoPilot `Please describe the results in detail — what are its core features?`"
           - text: "Once you have the results tell me the selected feature you want to implement."
-
+    - actionId: ready_message
+      params:
+        person: lucca
 trigger:
   type: user_message
   flowNode:

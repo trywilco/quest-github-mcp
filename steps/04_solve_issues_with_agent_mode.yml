@@ -1,8 +1,6 @@
 id: 04_solve_issues_with_agent_mode
 learningObjectives:
   - Use Copilot Agent Mode to select and implement GitHub issues
-  - Create branches, implement fixes, and push changes via AI assistance
-  - Practice responsible AI-guided development workflow
 hints: []
 startFlow:
   do:
@@ -11,16 +9,12 @@ startFlow:
         person: lucca
         messages:
           - text: "Time to put Copilot Agent Mode to work! 🧰"
-          - text: "Now that you've created GitHub issues, let's use Copilot to actually implement one of them."
+          - text: "Now that you've created GitHub issues and you know which one you want to implement first, let's use Copilot to actually implement it."
           - text: "Ask Copilot in Chat:"
           - text: "`#codebase How many open issues are there?`"
-          - text: "Then ask:"
-          - text: "`Please get the list of issues, review the descriptions, and pick the top 3 most important.`"
-          - text: "Choose one issue and tell Copilot:"
-          - text: "`#codebase Let's do the first one. Follow these steps: Create a new branch, Implement the fix or feature, Push changes and open a pull request.`"
-          - text: "⚠️ **Important:** Always review Copilot's proposed commands and code — MCP gives Copilot real power."
+          - text: "Then instruct Copilot to implement a specific one:"
+          - text: "`#codebase lets implement issue YOURISSUEURL. Follow these steps: Create a new branch, Implement the fix or feature, Push changes and open a pull request.`"
           - text: ":instruction[Tell me when you've successfully opened a pull request for the issue implementation.]"
-
 trigger:
   type: user_message
   flowNode:
