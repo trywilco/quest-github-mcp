@@ -11,16 +11,16 @@ startFlow:
           - text: "Once your Codespace is ready let's add the MCP Server."
           - text: "Create `.vscode/mcp.json` file if you dont have it alrady, and add the GitHub MCP Server configuration:"
           - text: |
-            ```json
-            {
-              "servers": {
-                "github": {
-                  "type": "http",
-                  "url": "https://api.githubcopilot.com/mcp/"
+              ```json
+              {
+                "servers": {
+                  "github": {
+                    "type": "http",
+                    "url": "https://api.githubcopilot.com/mcp/"
+                  }
                 }
               }
-            }
-            ```
+              ```
           - text: "Once you save the file, a GitHub authentication window will pop up asking you to connect with your GitHub account."
           - text: "Follow the instructions in the popup to authenticate. Once done, close the window and return to your Codespace to continue working with MCP."
           - text: ":instruction[Create the MCP configuration file and commit it to your repository.] Once you've created `.vscode/mcp.json` with the GitHub MCP Server configuration I'll detect your progress and we can move to the next step!"
