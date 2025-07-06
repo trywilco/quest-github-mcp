@@ -8,17 +8,23 @@ startFlow:
       params:
         person: lucca
         messages:
-          - text: "Great! Now let's see how a GitHub issue for the selected feature."
-          - text: "Now, lets see how CoPilot can read a document and open an issue accordingly."
-          - text: "Here is a document with the feature description, drag it to the CoPilot chat and ask CoPilot to create a GitHub issue based on it."
+          - text: "Great! Now let's see how GitHub Copilot reads and creates an issue for you."
+          - text: "Here is a document with the feature description that a Product Manager wrote for your quiz app, drag it to the CoPilot chat and ask CoPilot to create a GitHub issue based on it."
+          - text: ":instruction[Drag the `![](${newfeature.md})` file to the Copilot chat window and write:]"
           - text: "`#codebase Can you create a GitHub issue for the new feature idea based on the attached document? Make sure you check the repository details and owner for opening the new issue.`"
           - text: "When prompted to use MCP, approve the request."
-          - text: "Let me know when Copilot has successfully created the GitHub issue."
-    - actionId: ready_message
-      params:
-        person: lucca
+          - text: "Let me know when Copilot has successfully created the GitHub issue and send me the issue link."
 trigger:
-  type: user_ready_response
+  type: user_message
   flowNode:
     do:
-      - actionId: finish_step
+      - actionId: bot_message
+        params:
+          person: lucca
+          messages:
+            - text: "Got it! Lets move on!"
+      - actionId: store_user_property
+        params:
+          name: issueurl
+          value: ${userMessageText}
+      - actionId: finish_step 

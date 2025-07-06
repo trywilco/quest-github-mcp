@@ -17,11 +17,13 @@ startFlow:
           - text: "When prompted to use GitHub MCP, approve the request."
           - text: "You can ask CoPilot `Please describe the results in detail — what are its core features?`"
           - text: "Once you have the results tell me the selected feature you think is worth implementing."
-    - actionId: ready_message
-      params:
-        person: lucca
 trigger:
-  type: user_ready_response
+  type: user_message
   flowNode:
     do:
+      - actionId: bot_message
+        params:
+          person: lucca
+          messages:
+            - text: "Thats a great feature idea! 🚀"
       - actionId: finish_step

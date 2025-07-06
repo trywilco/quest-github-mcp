@@ -9,17 +9,16 @@ startFlow:
         person: lucca
         messages:
           - text: "Time to put Copilot Agent Mode to work! 🧰"
-          - text: "Now that you've created GitHub issues and you know which one you want to implement first, let's use Copilot to actually implement it."
-          - text: "Ask Copilot in Chat:"
-          - text: "`#codebase How many open issues are there?`"
-          - text: "Then instruct Copilot to implement a specific one:"
-          - text: "`#codebase lets implement issue YOURISSUEURL. Follow these steps: Create a new branch, Implement the fix or feature, Push changes and open a pull request.`"
-          - text: ":instruction[Tell me when you've successfully opened a pull request for the issue implementation.]"
-    - actionId: ready_message
-      params:
-        person: lucca
+          - text: "Now that you've created GitHub issue and you know which one you want to implement first, let's use Copilot to actually implement it."
+          - text: "Instruct Copilot to implement a specific one:"
+          - text: "`#codebase Get to work! Lets implement issue ${user.properties.issueurl}. Follow these steps: Create a new branch, Implement the feature, Push changes and open a pull request.`"
+          - text: ":instruction[Once you've successfully opened a pull request for the issue implementation I'll validate it.]"
 trigger:
-  type: user_ready_response
+  type: github_pr_lifecycle_status
   flowNode:
     do:
-      - actionId: finish_step
+      - actionId: github_pr_review
+        params:
+          messages:
+            person: lucca
+            text: "Great! You've successfully opened a pull request for the issue implementation. 🎉"

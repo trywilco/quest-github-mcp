@@ -14,8 +14,6 @@ startFlow:
 
               **🔧 MCP Server Setup:**
               • Configured the GitHub MCP Server in your Codespace
-              • Set up proper authentication with GitHub Personal Access Token
-              • Connected Copilot Agent Mode to GitHub's API via MCP
               • Learned that MCP is like "USB-C for AI" - connecting tools safely
 
               **� AI-Powered Research:**
@@ -25,13 +23,12 @@ startFlow:
               • Leveraged AI to understand project landscapes quickly
 
               **� Automated Issue Management:**
-              • Created GitHub issues automatically via Copilot Agent Mode
+              • Created GitHub issue automatically via Copilot Agent Mode
               • Learned to let AI help with project planning and feature tracking
               • Practiced responsible AI-assisted project management
               • Used AI to generate actionable development tasks
 
               **🧰 Implementation Workflow:**
-              • Selected and prioritized issues using AI assistance
               • Used Copilot to create branches and implement features
               • Leveraged AI for code generation and problem-solving
               • Practiced AI-guided development with proper oversight
