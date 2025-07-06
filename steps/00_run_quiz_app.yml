@@ -17,6 +17,7 @@ startFlow:
           - text: "Once your Codespace is ready, run the following command to start the Quiz App:"
           - text: "`./start.sh`"
           - text: "This will spin up your Quiz App and prepare the environment for the next steps."
+          - text: "*Make sure that the ports under your Codespace ports tab are set to public so that you can access the Quiz App.*"
     - actionId: ready_message
       params:
         person: lucca
