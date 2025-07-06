@@ -21,4 +21,5 @@ trigger:
         params:
           messages:
             person: lucca
-            text: "Great! You've successfully opened a pull request for the issue implementation. 🎉"
+            messages:
+              text: "Great! You've successfully opened a pull request for the issue implementation. 🎉"
