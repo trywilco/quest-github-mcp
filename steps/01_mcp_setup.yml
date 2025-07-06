@@ -55,3 +55,6 @@ trigger:
               person: lucca
               messages:
                 - text: "❌ The MCP URL is missing or incorrect in your Codespace. Please update the /.vscode/mcp.json file and try again."
+          - actionId: ready_message
+            params:
+              person: lucca
