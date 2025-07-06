@@ -27,6 +27,7 @@ startFlow:
     - actionId: ready_message
       params:
         person: lucca
+        
 trigger:
   type: user_ready_response
   flowNode:
