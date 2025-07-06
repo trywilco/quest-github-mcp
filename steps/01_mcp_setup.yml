@@ -47,7 +47,7 @@ trigger:
               person: lucca
               messages:
                 - text: "✅ The MCP URL is correctly configured in your Codespace!"
-                - actionId: finish_step
+          - actionId: finish_step
       else:
         do:
           - actionId: bot_message
