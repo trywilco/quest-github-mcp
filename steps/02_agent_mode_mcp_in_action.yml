@@ -13,7 +13,7 @@ startFlow:
           - text: "Let's use this superpower todo some research and brainstorming."
           - text: ":instruction[Click the Copilot icon in top right corner to open Copilot chat next to the search bar.]"
           - text: "Lets ask Copilot to come up with new feature ideas by researching similar GitHub repositories like Kahoot, Quizizz, and Quizlet."
-          - text: "`Can you find similar repositories to Kahoot, Quizizz, and Quizlet, do a quick research come up with 3 super simple new feature ideas for our quiz project? Make them short and focused.`"
+          - text: "`Can you find similar repositories to Kahoot, Quizizz, and Quizlet, do a quick research come up with 3 super simple new feature ideas for our quiz project? Make them short and focused. Dont write any document in repository, just answer in chat, quick and short.`"
           - text: "When prompted to use GitHub MCP, approve the request."
           - text: "You can ask CoPilot `Please describe the results in detail — what are its core features?`"
           - text: "Once you have the results tell me the selected feature you think is worth implementing."
