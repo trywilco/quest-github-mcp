@@ -11,7 +11,7 @@ startFlow:
           - text: "Once your Codespace is ready let's add the MCP Server."
           - text: "Create a new directory called `.vscode` in the root of your Codespace if it doesn't exist already."
           - text: "This directory will hold the MCP configuration file."
-          - text: "The MCP Server allows GitHub Copilot to communicate with GitHub's
+          - text: "The MCP Server allows GitHub Copilot to communicate with GitHub's services, enabling it to access and utilize GitHub's API effectively."
           - text: "Create `.vscode/mcp.json` file if you dont have it already, and add the GitHub MCP Server configuration:"
           - text: |
               ```json

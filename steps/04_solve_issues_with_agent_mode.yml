@@ -17,7 +17,7 @@ trigger:
   type: github_pr_lifecycle_status
   flowNode:
     do:
-      - actionId: github_pr_review
+      - actionId: bot_message
         params:
           messages:
             person: lucca

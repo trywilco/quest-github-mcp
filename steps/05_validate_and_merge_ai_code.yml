@@ -13,9 +13,11 @@ startFlow:
           - text: "Time to close up your issue and see how CoPilot adds context after! ✅"
           - text: "This is a crucial step in responsible AI-assisted development."
           - text: "Here's what you need to do:"
-          - text: "After merging, ask Copilot in Chat:"
-          - text: "`Add a closing comment to the issue we just finished. Provide a 1-sentence summary of the fix and thank the commenters.`"
-          - text: ":instruction[Tell me when you've successfully merged the PR and closed the issue.]"
+          - text: "1. **Open the pull request** in GitHub for the issue you just implemented"
+          - text: "2. **Review the code** thoroughly - make sure it matches the original issue"
+          - text: "3. **Test the changes** if possible"
+          - text: "4. Ask CoPilot in chat `Add a closing comment to the issue we just finished. Provide a 1-sentence summary of the fix and thank the commenters.`"
+          - text: ":instruction[Tell me once you've reviewed the code and I'll approve the PR so you can merge it.]"
     - actionId: ready_message
       params:
         person: lucca
@@ -23,4 +25,10 @@ trigger:
   type: user_ready_response
   flowNode:
     do:
+      - actionId: github_pr_approve
+      - actionId: bot_message
+        params:
+          messages:
+            person: lucca
+            text: "Great! I've approved your PR and you can now merge it. 🎉"
       - actionId: finish_step
