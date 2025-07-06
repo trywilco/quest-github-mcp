@@ -28,7 +28,7 @@ trigger:
       - actionId: github_pr_approve
       - actionId: bot_message
         params:
+          person: lucca
           messages:
-            person: lucca
-            text: "Great! I've approved your PR and you can now merge it. 🎉"
+            - text: "Great! I've approved your PR and you can now merge it. 🎉"
       - actionId: finish_step
