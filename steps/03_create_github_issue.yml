@@ -9,7 +9,7 @@ startFlow:
         person: lucca
         messages:
           - text: "Great! Now let's see how GitHub Copilot reads and creates an issue for you."
-          - text: "Here is a document with the feature description that a Product Manager wrote for your quiz app, drag it to the CoPilot chat and ask CoPilot to create a GitHub issue based on it."
+          - text: "Here is a [document with the feature description](${newfeature.md}) that a Product Manager wrote for your quiz app, upload it to your Codespace repository."
           - text: ":instruction[In your CoPilot chat, click the paperclip icon > Files and Folders > newfeature.md]"
           - text: "Giving context to CoPilot is important, so it can understand the task better by reading the document."
           - text: "`#codebase Can you create a GitHub issue for the new feature idea based on the attached document? Make sure you check the repository details and owner for opening the new issue.`"
