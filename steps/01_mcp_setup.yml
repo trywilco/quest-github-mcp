@@ -27,7 +27,6 @@ startFlow:
     - actionId: ready_message
       params:
         person: lucca
-        
 trigger:
   type: user_ready_response
   flowNode:
@@ -40,7 +39,7 @@ trigger:
       conditions:
         - conditionId: is_truthy
           params:
-          value: "${outputs.check_mcp_url?.data}"
+            value: "${outputs.check_mcp_url?.data}"
       then:
         do:
           - actionId: bot_message
