@@ -13,7 +13,7 @@ startFlow:
           - text: "Let's use this superpower to research and enhance your project."
           - text: ":instruction[Click the Copilot icon in top right corner to open Copilot chat next to the search bar.]"
           - text: "Lets ask Copilot to come up with new feature ideas by researching similar GitHub repositories like Kahoot, Quizizz, and Quizlet."
-          - text: "`Can you find similar repositories to Kahoot, Quizizz, and Quizlet and come up with new feature ideas for our project?`"
+          - text: "`Can you find similar repositories to Kahoot, Quizizz, and Quizlet, do a quick research come up with 3 super simple new feature ideas for our quiz project? Make them short and focused.`"
           - text: "When prompted to use MCP, approve the request."
           - text: "You can ask CoPilot `Please describe the results in detail — what are its core features?`"
           - text: "Once you have the results tell me the selected feature you want to implement."
@@ -21,37 +21,7 @@ startFlow:
       params:
         person: lucca
 trigger:
-  type: user_message
+  type: user_ready_response
   flowNode:
-    if:
-      conditions:
-        - conditionId: text_match_regex
-          params:
-            text: "${userMessageText}"
-            regex: "(?i).*(created|issues|github|generated|opened).*"
-      then:
-        do:
-          - actionId: bot_message
-            params:
-              person: lucca
-              messages:
-                - text: "Excellent work! 🎉 You've successfully used Agent Mode + MCP for competitive research."
-                - text: "✅ Researched similar repositories using Copilot + GitHub API"
-                - text: "✅ Analyzed features and compared them to your project"
-                - text: "✅ Generated new feature ideas through AI assistance"
-                - text: "✅ Created GitHub issues automatically via Copilot"
-                - text: "This demonstrates the incredible power of AI-augmented development workflow."
-                - text: "Now you have a backlog of AI-researched features ready to implement!"
-          - actionId: finish_step
-      else:
-        do:
-          - actionId: bot_message
-            params:
-              person: lucca
-              messages:
-                - text: "I don't see confirmation that you've completed the research and issue creation process yet."
-                - text: "Please continue working with Copilot to:"
-                - text: "1. Research similar GitHub repositories"
-                - text: "2. Analyze their features compared to your project"
-                - text: "3. Have Copilot create GitHub issues for new feature ideas"
-                - text: "Remember to approve MCP usage when prompted!"
+    do:
+      - actionId: finish_step

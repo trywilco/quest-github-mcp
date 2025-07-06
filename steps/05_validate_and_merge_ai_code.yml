@@ -21,39 +21,11 @@ startFlow:
           - text: "After merging, ask Copilot in Chat:"
           - text: "`Add a closing comment to the issue we just finished. Provide a 1-sentence summary of the fix and thank the commenters.`"
           - text: ":instruction[Tell me when you've successfully merged the PR and closed the issue.]"
-
+    - actionId: ready_message
+      params:
+        person: lucca
 trigger:
-  type: user_message
+  type: user_ready_response
   flowNode:
-    if:
-      conditions:
-        - conditionId: text_match_regex
-          params:
-            text: "${userMessageText}"
-            regex: "(?i).*(merged|closed|complete|finished|done).*"
-      then:
-        do:
-          - actionId: bot_message
-            params:
-              person: lucca
-              messages:
-                - text: "Outstanding work! 🎉 You've successfully completed the AI-assisted development cycle."
-                - text: "✅ Reviewed AI-generated code responsibly"
-                - text: "✅ Merged the pull request safely"
-                - text: "✅ Closed the issue with proper communication"
-                - text: "This demonstrates excellent practices for working with AI-generated code."
-                - text: "Mona will respond once the issue is closed, confirming the successful completion."
-                - text: "You've now mastered the full workflow of using GitHub Copilot Agent Mode with MCP!"
-          - actionId: finish_step
-      else:
-        do:
-          - actionId: bot_message
-            params:
-              person: lucca
-              messages:
-                - text: "I don't see confirmation that you've completed the review and merge process yet."
-                - text: "Please make sure to:"
-                - text: "1. Review the pull request code thoroughly"
-                - text: "2. Merge the PR if the code looks good"
-                - text: "3. Have Copilot add a closing comment to the issue"
-                - text: "Let me know when everything is complete!"
+    do:
+      - actionId: finish_step

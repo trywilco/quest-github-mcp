@@ -31,31 +31,4 @@ trigger:
   type: user_ready_response
   flowNode:
     do:
-      - actionId: run_command
-        name: check_mcp_url
-        params:
-          command: "grep -q 'https://api.githubcopilot.com/mcp/' /.vscode/mcp.json"
-    if:
-      conditions:
-        - conditionId: text_match_regex
-          params:
-            text: "${outputs.check_mcp_url?.data}"
-            regex: ".*[1-9][0-9]* passing.*"
-      then:
-        do:
-          - actionId: bot_message
-            params:
-              person: lucca
-              messages:
-                - text: "✅ The MCP URL is correctly configured in your Codespace!"
-          - actionId: finish_step
-      else:
-        do:
-          - actionId: bot_message
-            params:
-              person: lucca
-              messages:
-                - text: "❌ The MCP URL is missing or incorrect in your Codespace. Please update the /.vscode/mcp.json file and try again."
-          - actionId: ready_message
-            params:
-              person: lucca
+      - actionId: finish_step

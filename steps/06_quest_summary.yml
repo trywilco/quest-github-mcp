@@ -51,8 +51,9 @@ startFlow:
           - text: "You've now mastered the powerful combination of GitHub Copilot Agent Mode and MCP! This quest has equipped you with cutting-edge AI-assisted development skills that will supercharge your productivity while maintaining code quality and safety."
           - text: "You're ready to tackle any development project with AI as your intelligent teammate. Keep exploring and building amazing things with responsible AI assistance! 🚀"
           - text: "**Next Steps:** Try applying these skills to your own projects - set up MCP servers for other tools, use Agent Mode for complex workflows, and always remember to validate AI outputs responsibly!"
-    - actionId: finish_step
-
+    - actionId: ready_message
+      params:
+        person: lucca
 trigger:
   type: user_ready_response
   flowNode:

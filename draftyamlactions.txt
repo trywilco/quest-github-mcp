@@ -1,0 +1,159 @@
+trigger:
+  type: user_ready_response
+  flowNode:
+    do:
+      - actionId: run_command
+        name: check_mcp_url
+        params:
+          command: "grep -q 'https://api.githubcopilot.com/mcp/' /.vscode/mcp.json"
+    if:
+      conditions:
+        - conditionId: text_match_regex
+          params:
+            text: "${outputs.check_mcp_url?.data}"
+            regex: ".*[1-9][0-9]* passing.*"
+      then:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: "✅ The MCP URL is correctly configured in your Codespace!"
+          - actionId: finish_step
+      else:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: "❌ The MCP URL is missing or incorrect in your Codespace. Please update the /.vscode/mcp.json file and try again."
+          - actionId: ready_message
+            params:
+              person: lucca
+
+
+
+
+
+
+
+
+    - actionId: ready_message
+      params:
+        person: lucca
+trigger:
+  type: user_message
+  flowNode:
+    if:
+      conditions:
+        - conditionId: text_match_regex
+          params:
+            text: "${userMessageText}"
+            regex: "(?i).*(created|issues|github|generated|opened).*"
+      then:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: "Excellent work! 🎉 You've successfully used Agent Mode + MCP for competitive research."
+                - text: "✅ Researched similar repositories using Copilot + GitHub API"
+                - text: "✅ Analyzed features and compared them to your project"
+                - text: "✅ Generated new feature ideas through AI assistance"
+                - text: "✅ Created GitHub issues automatically via Copilot"
+                - text: "This demonstrates the incredible power of AI-augmented development workflow."
+                - text: "Now you have a backlog of AI-researched features ready to implement!"
+          - actionId: finish_step
+      else:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: "I don't see confirmation that you've completed the research and issue creation process yet."
+                - text: "Please continue working with Copilot to:"
+                - text: "1. Research similar GitHub repositories"
+                - text: "2. Analyze their features compared to your project"
+                - text: "3. Have Copilot create GitHub issues for new feature ideas"
+                - text: "Remember to approve MCP usage when prompted!"
+
+
+
+
+
+trigger:
+  type: user_message
+  flowNode:
+    if:
+      conditions:
+        - conditionId: text_match_regex
+          params:
+            text: "${userMessageText}"
+            regex: "(?i).*(pull request|pr|opened|created).*"
+      then:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: "Excellent! 🎉 You've successfully used Copilot Agent Mode to implement a feature from a GitHub issue."
+                - text: "✅ Selected an important issue to work on"
+                - text: "✅ Used Copilot to create a branch and implement the fix"
+                - text: "✅ Opened a pull request for review"
+                - text: "This demonstrates the power of AI-assisted development workflow. Mona will automatically detect your PR and begin reviewing."
+                - text: "Next, we'll learn how to responsibly validate and merge AI-generated code."
+          - actionId: finish_step
+      else:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: "I don't see confirmation that you've opened a pull request yet."
+                - text: "Please continue working with Copilot to:"
+                - text: "1. Review the open issues in your repository"
+                - text: "2. Select one to implement"
+                - text: "3. Let Copilot create a branch and implement the solution"
+                - text: "4. Push the changes and open a pull request"
+                - text: "Once you've opened the PR, let me know!"
+
+
+
+
+
+
+trigger:
+  type: user_message
+  flowNode:
+    if:
+      conditions:
+        - conditionId: text_match_regex
+          params:
+            text: "${userMessageText}"
+            regex: "(?i).*(merged|closed|complete|finished|done).*"
+      then:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: "Outstanding work! 🎉 You've successfully completed the AI-assisted development cycle."
+                - text: "✅ Reviewed AI-generated code responsibly"
+                - text: "✅ Merged the pull request safely"
+                - text: "✅ Closed the issue with proper communication"
+                - text: "This demonstrates excellent practices for working with AI-generated code."
+                - text: "Mona will respond once the issue is closed, confirming the successful completion."
+                - text: "You've now mastered the full workflow of using GitHub Copilot Agent Mode with MCP!"
+          - actionId: finish_step
+      else:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: "I don't see confirmation that you've completed the review and merge process yet."
+                - text: "Please make sure to:"
+                - text: "1. Review the pull request code thoroughly"
+                - text: "2. Merge the PR if the code looks good"
+                - text: "3. Have Copilot add a closing comment to the issue"
+                - text: "Let me know when everything is complete!"
