@@ -10,14 +10,9 @@ startFlow:
       params:
         person: lucca
         messages:
-          - text: "Time to validate and merge your AI-generated code! ✅"
+          - text: "Time to close up your issue and see how CoPilot adds context after! ✅"
           - text: "This is a crucial step in responsible AI-assisted development."
           - text: "Here's what you need to do:"
-          - text: "1. **Open the pull request** in GitHub"
-          - text: "2. **Review the code** thoroughly - make sure it matches the original issue"
-          - text: "3. **Test the changes** if possible"
-          - text: "4. **Merge the pull request** once you're satisfied"
-          - text: "🎁 **Bonus:** If you have Copilot-powered PR review, use it here."
           - text: "After merging, ask Copilot in Chat:"
           - text: "`Add a closing comment to the issue we just finished. Provide a 1-sentence summary of the fix and thank the commenters.`"
           - text: ":instruction[Tell me when you've successfully merged the PR and closed the issue.]"
