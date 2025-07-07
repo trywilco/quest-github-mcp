@@ -26,9 +26,4 @@ trigger:
         params:
           name: prnumber
           value: ${githubPrNumber}
-      - actionId: bot_message
-        params:
-          person: lucca
-          messages:
-            - text: ${user.properties.prnumber}
-            - text: ${githubPrNumber}
+      - actionId: finish_step
