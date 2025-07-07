@@ -12,34 +12,40 @@ startFlow:
           - text: |
               ## Quest Summary - What We Accomplished Together:
 
-              **🔧 MCP Server Setup:**
+              **MCP Server Setup:**
+
               • Configured the GitHub MCP Server in your Codespace
               • Learned that MCP is like "USB-C for AI" - connecting tools safely
 
-              **� AI-Powered Research:**
+              **AI-Powered Research:**
+
               • Used Copilot + MCP to research similar GitHub repositories
               • Analyzed and compared features across different projects
               • Generated new feature ideas based on competitive analysis
               • Leveraged AI to understand project landscapes quickly
 
-              **� Automated Issue Management:**
+              **Automated Issue Management:**
+
               • Created GitHub issue automatically via Copilot Agent Mode
               • Learned to let AI help with project planning and feature tracking
               • Practiced responsible AI-assisted project management
               • Used AI to generate actionable development tasks
 
-              **🧰 Implementation Workflow:**
+              **Implementation Workflow:**
+
               • Used Copilot to create branches and implement features
               • Leveraged AI for code generation and problem-solving
               • Practiced AI-guided development with proper oversight
 
-              **✅ Responsible AI Development:**
+              **Responsible AI Development:**
+
               • Reviewed and validated AI-generated code thoroughly
               • Merged pull requests with proper human oversight
               • Closed issues with appropriate communication
               • Learned the importance of human validation in AI workflows
 
-              **🤖 Agent Mode Mastery:**
+              **Agent Mode Mastery:**
+
               • Mastered GitHub Copilot Agent Mode capabilities
               • Understood how MCP extends AI tool capabilities
               • Learned effective prompting for complex AI workflows
