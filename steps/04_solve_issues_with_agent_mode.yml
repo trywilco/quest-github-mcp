@@ -22,4 +22,13 @@ trigger:
           person: lucca
           messages:
             - text: "Great! You've successfully opened a pull request for the issue implementation. 🎉 "
-      - actionId: finish_step 
+      - actionId: store_user_property
+        params:
+          name: prnumber
+          value: ${githubPrNumber}
+      - actionId: bot_message
+        params:
+          person: lucca
+          messages:
+            - text: ${user.properties.prnumber}
+            - text: ${githubPrNumber}
