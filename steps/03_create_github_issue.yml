@@ -8,7 +8,8 @@ startFlow:
       params:
         person: lucca
         messages:
-          - text: "Great! Now let's see how GitHub Copilot reads and creates an issue for you."
+          - text: "That is an amazing idea! I'm going to document it in our issues later so we can review it together, but our Product Manager has requested a new feature."
+          - text: "Let's see how GitHub Copilot reads and creates an issue for you."
           - text: "Here is a [document with the feature description](${newfeature.md}) that a Product Manager wrote for your quiz app, :instruction[upload it to your Codespace repository.]"
           - text: ":instruction[In your CoPilot chat, click the paperclip icon > Files and Folders > newfeature.md]"
           - text: "Giving context to CoPilot is important, so it can understand the task better by reading the document."
@@ -18,14 +19,21 @@ startFlow:
 trigger:
   type: user_message
   flowNode:
-    do:
-      - actionId: bot_message
+    if:
+      conditions:
+      - conditionId: text_match_regex
         params:
-          person: lucca
-          messages:
-            - text: "Got it! Lets move on!"
-      - actionId: store_user_property
-        params:
-          name: issueurl
-          value: ${userMessageText}
-      - actionId: finish_step 
+          text: ${userMessageText}
+          regex: ^https:\/\/github\.com\/Wilcolab\/[A-Za-z0-9\-]+\/issues\/\d+$
+      then:
+        do:
+        - actionId: bot_message
+          params:
+            person: lucca
+            messages:
+              - text: "Got it! Lets move on!"
+        - actionId: store_user_property
+          params:
+            name: issueurl
+            value: ${userMessageText}
+        - actionId: finish_step 
