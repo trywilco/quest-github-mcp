@@ -37,3 +37,10 @@ trigger:
             name: issueurl
             value: ${userMessageText}
         - actionId: finish_step 
+      else:
+        do:
+        - actionId: bot_message
+          params:
+            person: lucca
+            messages:
+              - text: "Thats not a GitHub issue URL is it?"
