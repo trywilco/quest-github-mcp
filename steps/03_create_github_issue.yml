@@ -23,8 +23,8 @@ trigger:
       conditions:
       - conditionId: text_match_regex
         params:
-          text: ${userMessageText}
-          regex: ^https:\/\/github\.com\/Wilcolab\/[A-Za-z0-9\-]+\/issues\/\d+$
+          text: "${userMessageText}"
+          regex: "^https:\/\/github\.com\/Wilcolab\/[A-Za-z0-9\-]+\/issues\/\d+$"
       then:
         do:
         - actionId: bot_message
