@@ -13,11 +13,13 @@ startFlow:
           - text: "Time to close up your issue and see how CoPilot adds context after! ✅"
           - text: "This is a crucial step in responsible AI-assisted development."
           - text: "Here's what you need to do:"
-          - text: "1. **Open the pull request** in GitHub for the issue you just implemented"
-          - text: "2. **Review the code** thoroughly - make sure it matches the original issue"
-          - text: "3. **Test the changes** if possible"
-          - text: "4. Ask CoPilot in chat `Add a closing comment to the issue we just finished. Provide a 1-sentence summary of the fix and thank the commenters.`"
+          - text: |
+              1. **Open the pull request** in GitHub for the issue you just implemented 
+              2. **Review the code** thoroughly - make sure it matches the original issue 
+              3. **Test the changes** if possible 
+              4. Ask CoPilot in chat `Add a closing comment to the issue we just finished. Provide a 1-sentence summary of the fix and thank the commenters.`
           - text: ":instruction[ Tell me once you've reviewed the code and I'll approve the PR so you can merge it.]"
+          - text: "*Remember to merge your code to continue!*"
     - actionId: ready_message
       params:
         person: lucca

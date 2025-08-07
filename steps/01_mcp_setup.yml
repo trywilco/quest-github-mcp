@@ -9,10 +9,10 @@ startFlow:
         person: lucca
         messages:
           - text: "Once your Codespace is ready let's add the MCP Server."
-          - text: "Create a new directory called `.vscode` in the root of your Codespace if it doesn't exist already."
+          - text: "* Create a new directory called `.vscode` in the root of your Codespace if it doesn't exist already."
           - text: "This directory will hold the MCP configuration file."
           - text: "The MCP Server allows GitHub Copilot to communicate with GitHub's services, enabling it to access and utilize GitHub's API effectively."
-          - text: "Create `.vscode/mcp.json` file if you dont have it already, and add the GitHub MCP Server configuration:"
+          - text: "* Create `.vscode/mcp.json` file if you dont have it already, and add the GitHub MCP Server configuration:"
           - text: |
               ```json
               {
@@ -24,9 +24,9 @@ startFlow:
                 }
               }
               ```
-          - text: "Once you save the file, a GitHub authentication window will pop up asking you to connect with your GitHub account, if not, click on the small 'start' text above it."
+          - text: "* Once you save the file, a GitHub authentication window will pop up asking you to connect with your GitHub account, if not, click on the small 'start' text above it."
           - text: "Follow the instructions in the popup to authenticate. Once done, close the window and return to your Codespace to continue working with MCP."
-          - text: ":instruction[Create the MCP configuration file] Once you've created `.vscode/mcp.json` with the GitHub MCP Server configuration, tell me and i'll validate it."
+          - text: "* :instruction[Create the MCP configuration file] Once you've created `.vscode/mcp.json` with the GitHub MCP Server configuration, tell me and i'll validate it."
     - actionId: ready_message
       params:
         person: lucca
